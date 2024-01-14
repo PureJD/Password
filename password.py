@@ -1,4 +1,6 @@
+import sys
 while True:
+    
     #Captures the password input from the user 
     def password_input():
         pass_input = input('Please enter a password: ')
@@ -13,13 +15,13 @@ while True:
         return len(pass_input) < 8
     
     def has_special_characters(pass_input):
-        special_char = False
+        special_char = True
         for letter in pass_input:
             if letter in special_characters:
-                special_char == True 
+                special_char = False
+                break
         return special_char
             
-
     #Encrypts the password with a very simple encryption. Considerations can be used to convert arrays into a dictionary also. This method allows further encryption by adding further values to indexing.  
     def encrypt(password):
         alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789~`! @#$%^&*()-_+={[]|\;:"<>,./?}'
@@ -30,18 +32,28 @@ while True:
             encrypt_password += cryptobet[index]
         return encrypt_password
 
+    def menu():
+        chosen_path = input('Please select where you would like to go next: 1. ANOTHER PASSWORD  2. HARDER ENCRYPTION  3. INFO  4. EXIT  :')
+        return chosen_path
+    
+    def exit():
+        sys.exit()
+
         
     if is_valid_length(pass_input):
         print('Please enter a password of at least 8 characters')
     elif has_special_characters(pass_input):
-        
         print('Please enter a password with at least one of the following special characters ~`! @#$%^&*()-_+={[]|\;:"<>,./?}'')')
     else:
         print('Thank you for the acceptable password') 
-        encrypt_password = encrypt(pass_input)
-        print(f'Your password has now been ecrypted as {encrypt_password}')
-
+        encrypted_password = encrypt(pass_input)
+        print('Your password has now been ecrypted as ' + encrypted_password)
+        chosen_path = menu()
+        if chosen_path == '4':
+            exit()
+    # STOPPING POINT. Need to add outcomes for 1 2 3. Add a harder encryption that is more clever and an option to unencrypt. THENNN GUI can be added and this program is done. 
     
+
 
 
     
