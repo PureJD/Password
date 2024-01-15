@@ -1,3 +1,4 @@
+from cryptography.fernet import Fernet
 import sys
 while True:
     
@@ -32,6 +33,21 @@ while True:
             encrypt_password += cryptobet[index]
         return encrypt_password
 
+    def harder_encryption(pass_input):
+        key = Fernet.generate_key()
+        fernet = Fernet(key)
+        encMessage = fernet.encrypt(pass_input.encode())
+        decMessage = fernet.decrypt(encMessage).decode()
+        return encMessage
+    
+    def harder_deencryption(harder_pass):
+        key = Fernet.generate_key()
+        fernet = Fernet(key)
+        encMessage = fernet.encrypt(pass_input.encode())
+        decMessage = fernet.decrypt(encMessage).decode()
+        return decMessage
+
+
     def menu():
         chosen_path = input('Please select where you would like to go next: 1. ANOTHER PASSWORD  2. HARDER ENCRYPTION  3. INFO  4. EXIT  :')
         return chosen_path
@@ -53,7 +69,13 @@ while True:
             exit()
         elif chosen_path == '3':
             print('Password protection is important in order to protect your personal data. There is no such thing as ''Encrypted'' and ''non-Encrypted'' as there are levels to encryption that are constantly being improved upon. One major fear in the computer science community it that quantum computing is going to be able to decrypt anything with little effort or time.')
-    
+        elif chosen_path == '2':
+            harder_pass = harder_encryption(pass_input)
+            print(f'This is an example of a higher level of ecryption{harder_pass}')
+            harder_pass_undo = harder_deencryption(harder_pass)
+            print(f'The above represents a high level encryption of password : {harder_pass_undo}')
+        
+
 
 
 
