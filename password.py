@@ -51,7 +51,8 @@ while True:
         chosen_path = menu()
         if chosen_path == '4':
             exit()
-    # STOPPING POINT. Need to add outcomes for 1 2 3. Add a harder encryption that is more clever and an option to unencrypt. THENNN GUI can be added and this program is done. 
+        elif chosen_path == '3':
+            print('Password protection is important in order to protect your personal data. There is no such thing as ''Encrypted'' and ''non-Encrypted'' as there are levels to encryption that are constantly being improved upon. One major fear in the computer science community it that quantum computing is going to be able to decrypt anything with little effort or time.')
     
 
 
